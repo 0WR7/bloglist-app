@@ -1,0 +1,1 @@
+AuserId LTER TABLE "blogs" ALTER COLUMN "user_id" DROP NOT NULL;

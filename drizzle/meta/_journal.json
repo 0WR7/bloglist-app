@@ -15,6 +15,13 @@
       "when": 1778252869536,
       "tag": "0001_flowery_nocturne",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1778255418656,
+      "tag": "0002_natural_ender_wiggin",
+      "breakpoints": true
     }
   ]
 }
