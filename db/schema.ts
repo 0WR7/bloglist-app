@@ -1,17 +1,31 @@
+import { relations } from "drizzle-orm";
 import { pgTable, serial, text, integer } from "drizzle-orm/pg-core";
 
 //change id to be not null later
 export const blogs = pgTable("blogs", {
-    id: serial("id").primaryKey(),
-    title: text("title").notNull(),
-    author: text("author").notNull(),
-    url: text("url").notNull(),
-    likes: integer().default(0).notNull(),
-    userId: integer("user_id").references(() => users.id)
-})
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  author: text("author").notNull(),
+  url: text("url").notNull(),
+  likes: integer().default(0).notNull(),
+  userId: integer("user_id")
+    .notNull()
+    .references(() => users.id),
+});
 
 export const users = pgTable("users", {
-    id: serial("id").primaryKey(),
-    username: text("username").notNull().unique(),
-    name: text("name").notNull()
-})
+  id: serial("id").primaryKey(),
+  username: text("username").notNull().unique(),
+  name: text("name").notNull(),
+});
+
+export const usersRelations = relations(users, ({ many }) => ({
+  blogs: many(blogs),
+}));
+
+export const blogsRelations = relations(blogs, ({ one }) => ({
+  user: one(users, {
+    fields: [blogs.userId],
+    references: [users.id],
+  }),
+}));
