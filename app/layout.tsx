@@ -1,16 +1,14 @@
-import Link from "next/link";
+import NavBar from "./components/NavBar";
+import AuthSessionProvider from "./components/SessionProvider";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <nav>
-          <Link href="/">Home</Link>
-          <Link href="/blogs">Blogs</Link>
-          <Link href="/users">Users</Link>
-          <Link href="/blogs/new">Create new</Link>
-        </nav>
-        {children}
+        <AuthSessionProvider>
+          <NavBar />
+          {children}
+        </AuthSessionProvider>
       </body>
     </html>
   );

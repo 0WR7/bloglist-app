@@ -1,4 +1,4 @@
-import { createBlog } from "@/app/actions/blogs"
+import { createBlog } from "@/app/actions/blogs";
 
 const NewBlog = () => {
   return (
@@ -12,21 +12,21 @@ const NewBlog = () => {
           </label>
         </div>
         <div>
-        <label>
-         Author
-          <input type="text" name="author" required />
-        </label>
-      </div>
-      <div>
-      <label>
-      Url
-        <input type="text" name="url" required />
-      </label>
-    </div>
-    <button type="submit">Create</button>
+          <label>
+            Author
+            <input type="text" name="author" required />
+          </label>
+        </div>
+        <div>
+          <label>
+            Url
+            <input type="text" name="url" required />
+          </label>
+        </div>
+        <button type="submit">Create</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default NewBlog
+export default NewBlog;

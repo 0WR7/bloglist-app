@@ -2,9 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getUserWithBlogs } from "../../services/users";
 
-const UserPage = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const { id } = await params;
-  const user = await getUserWithBlogs(Number(id));
+const UserPage = async ({ params }: { params: Promise<{ username: string }> }) => {
+  const { username } = await params;
+  const user = await getUserWithBlogs(String(username));
 
   if (!user) {
     notFound();
@@ -18,7 +18,7 @@ const UserPage = async ({ params }: { params: Promise<{ id: string }> }) => {
       <ul>
         {user.blogs.map((blog) => (
           <li key={blog.id}>
-            <Link href={`/blogs${blog.id}`}>{blog.title}</Link>
+            <Link href={`/blogs/${blog.id}`}>{blog.title}</Link>
             <p>{blog.author}</p>
           </li>
         ))}
