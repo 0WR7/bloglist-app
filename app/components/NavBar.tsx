@@ -16,12 +16,16 @@ export default function NavBar() {
       {" | "}
       {session ? (
         <>
-          <Link href="/logs/new">create new</Link>
+          <Link href="/blogs/new">create new</Link>
           {" | "}
           <em>{session.user?.name} logged in</em> <button onClick={() => signOut()}>logout</button>
         </>
       ) : (
-        <Link href="/login">login</Link>
+        <>
+          <Link href="/login">login</Link>
+          {" | "}
+          <Link href="/register">register</Link>
+        </>
       )}
     </nav>
   );
